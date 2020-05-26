@@ -7,16 +7,11 @@ const Navbar = () => {
   const { isAuthenticated, toggleAuth } = useContext(AuthContext);
   const theme = isLightTheme ? light : dark;
   return (
-    <nav style={{ background: theme.ui, color: theme.syntax }}>
+    <nav className="navbar" style={{ background: theme.ui, color: theme.syntax }}>
       <h1>My Reading List</h1>
       <div onClick={() => toggleAuth()}>
         { isAuthenticated ? 'Logged in' : 'Logged out' }
       </div>
-      <ul>
-        <li>Home</li>
-        <li>About</li>
-        <li>Contact</li>
-      </ul>
     </nav>
   );
 }

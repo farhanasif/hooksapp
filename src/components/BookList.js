@@ -8,13 +8,15 @@ const BookList = () => {
   const theme = isLightTheme ? light : dark;
   
   return books.length > 0 ? ( 
-    <div className="book-list" style={{ color: theme.syntax, background: theme.bg }}>
+    <div className="book-list" //style={{ color: theme.syntax, background: theme.bg }}
+    >
       <ul>
         {books.map(book => {
           return (
             <li 
               key={book.id} 
-              style={{ background: theme.ui }}
+              //style={{ background: theme.ui }}
+              className="title"
               onClick={() => removeBook(book.id)}
             >{book.title}</li>
           );
