@@ -4,9 +4,9 @@ import { BookContext } from '../contexts/BookContext';
 
 const BookList = () => {
   const { isLightTheme, light, dark } = useContext(ThemeContext);
-  const { books, addBook, removeBook } = useContext(BookContext);
+  const { books } = useContext(BookContext);
   const theme = isLightTheme ? light : dark;
-  
+  const { dispatch } = useContext(BookContext);
   return books.length > 0 ? ( 
     <div className="book-list" //style={{ color: theme.syntax, background: theme.bg }}
     >
@@ -17,7 +17,7 @@ const BookList = () => {
               key={book.id} 
               //style={{ background: theme.ui }}
               className="title"
-              onClick={() => removeBook(book.id)}
+              onClick={() => dispatch({ type: 'REMOVE_BOOK', id: book.id })}
             >{book.title}</li>
           );
         })}
