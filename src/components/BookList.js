@@ -7,7 +7,10 @@ const BookList = () => {
   const { books } = useContext(BookContext);
   const theme = isLightTheme ? light : dark;
   const { dispatch } = useContext(BookContext);
-  return books.length > 0 ? ( 
+
+  console.log(books);
+
+  return books ? ( 
     <div className="book-list" //style={{ color: theme.syntax, background: theme.bg }}
     >
       <ul>

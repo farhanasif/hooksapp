@@ -3,12 +3,29 @@ import { bookReducer } from '../reducers/bookReducer';
 
 export const BookContext = createContext();
 
+const geturl = "https://api-experiment-sqlite.glitch.me/books";
+
 const BookContextProvider = (props) => {
   const [books, dispatch] = useReducer(bookReducer, [], () => {
-    const localData = localStorage.getItem('books');
-    return localData ? JSON.parse(localData) : [];
+    fetch(geturl)
+    .then(res => res.json())
+    .then((result) => {
+      console.log(result.data);
+      if(result.data.length > 0){
+        const data = result.data;
+        dispatch({type: "INIT", data});
+        //return result.data;
+      }
+      else{
+        return [];
+      }
+    });
+    // const localData = localStorage.getItem('books');
+    // return localData ? JSON.parse(localData) : [];
   });
   useEffect(() => {
+    console.log('call----------')
+    console.log(books);
     localStorage.setItem('books', JSON.stringify(books));
   }, [books]);
   return (
