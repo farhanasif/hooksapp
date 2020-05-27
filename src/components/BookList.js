@@ -1,6 +1,22 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from '../contexts/ThemeContext';
 import { BookContext } from '../contexts/BookContext';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const MySwal = withReactContent(Swal)
+
+const Toast = MySwal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  onOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+})
 
 const BookList = () => {
   const { isLightTheme, light, dark } = useContext(ThemeContext);
@@ -16,8 +32,10 @@ const BookList = () => {
         method: 'DELETE'
       }).then((response) => response.json())
       .then((json) => {
-        console.log('remove complete')
-        console.log(json)
+        Toast.fire({
+          icon: 'success',
+          title: 'Book removed successfully'
+        })
         dispatch({ type: 'REMOVE_BOOK', id })
       })
       .catch((error) => {
