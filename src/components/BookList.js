@@ -10,6 +10,21 @@ const BookList = () => {
 
   console.log(books);
 
+  const handleRemove = async(id) => { 
+    const url = "https://api-experiment-sqlite.glitch.me/book/"+id;
+    await fetch(url, {
+        method: 'DELETE'
+      }).then((response) => response.json())
+      .then((json) => {
+        console.log('remove complete')
+        console.log(json)
+        dispatch({ type: 'REMOVE_BOOK', id })
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
   return books ? ( 
     <div className="book-list" //style={{ color: theme.syntax, background: theme.bg }}
     >
@@ -20,7 +35,7 @@ const BookList = () => {
               key={book.id} 
               //style={{ background: theme.ui }}
               className="title"
-              onClick={() => dispatch({ type: 'REMOVE_BOOK', id: book.id })}
+              onClick={() => handleRemove(book.id)}
             >{book.title}</li>
           );
         })}

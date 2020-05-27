@@ -6,31 +6,25 @@ export const BookContext = createContext();
 const geturl = "https://api-experiment-sqlite.glitch.me/books";
 
 const BookContextProvider = (props) => {
-  const [books, dispatch] = useReducer(bookReducer, [], () => {
-    console.log('----------loading data-------------')
-    fetch(geturl)
-    .then(res => res.json())
-    .then((result) => {
-      console.log(result.data);
-      if(result.data.length > 0){
-        const data = result.data;
-        dispatch({type: "INIT", data});
-      }
-      else{
-        return [];
-      }
-    });
-    // const localData = localStorage.getItem('books');
-    // return localData ? JSON.parse(localData) : [];
-  });
+  const [books, dispatch] = useReducer(bookReducer, []);
   useEffect(() => {
-    console.log('-----useEffect-----');
-    console.log(books);
-    if(!books){
-      dispatch({type: "LOAD"});;
+    console.log('----------useEffect-------------')
+    async function fetchData(){
+      await fetch(geturl)
+      .then(res => res.json())
+      .then((result) => {
+        console.log(result.data);
+        if(result.data.length > 0){
+          const data = result.data;
+          dispatch({type: "INIT", data});
+        }
+        else{
+          return [];
+        }
+      });
     }
-    
-  }, [books]);
+    fetchData();
+  }, []);
   return (
     <BookContext.Provider value={{ books, dispatch }}>
       {props.children}

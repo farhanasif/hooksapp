@@ -5,11 +5,32 @@ const NewBookForm = () => {
   const { dispatch } = useContext(BookContext);
   const [title, setTitle] = useState('');
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    dispatch({ type: 'ADD_BOOK', book: { title }});
+    
+    await fetch('https://api-experiment-sqlite.glitch.me/book', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          title: title,
+        })
+      }).then((response) => response.json())
+      .then((json) => {
+        console.log('insert complete')
+        const id = json.id;
+        dispatch({ type: 'ADD_BOOK', book: { title, id}});
+      })
+      .catch((error) => {
+        console.error(error);
+    });
+    
     setTitle('');
   }
+
+
 
   return (
     <form onSubmit={handleSubmit}>

@@ -1,47 +1,14 @@
-import {v1 as uuid} from 'uuid';
 
 export const bookReducer = (state = [], action) => {
   switch (action.type) {
     case 'ADD_BOOK':
-      //calling a ajax request
-      fetch('https://api-experiment-sqlite.glitch.me/book', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
+      return [...state, {
           title: action.book.title,
-        })
-      }).then((response) => response.json())
-      .then((json) => {
-        console.log(json.id)
-        return [...state, {
-            title: action.book.title,
-            id: json.id
-          }
-        ]
-        // json.movies;
-      })
-      .catch((error) => {
-        console.error(error);
-        return state;
-      });
-      break;
+          id: action.book.id
+        }
+      ]
     case 'REMOVE_BOOK':
-      const url = "https://api-experiment-sqlite.glitch.me/book/"+action.id;
-      fetch(url, {
-        method: 'DELETE'
-      }).then((response) => response.json())
-      .then((json) => {
-        console.log(state)
-        return state.filter(book => book.id !== action.id);
-      })
-      .catch((error) => {
-        console.error(error);
-        return state;
-      });
-      break;
+      return state.filter(book => book.id !== action.id);
     case 'INIT':
       console.log('========INIT CALL:=============')
       //console.log(action);
@@ -58,7 +25,7 @@ export const bookReducer = (state = [], action) => {
       fetch(geturl)
       .then(res => res.json())
       .then((result) => {
-        console.log('calling loading function');
+        console.log('<<<<<<<<<<<<<<<<<calling loading function');
         //console.log(result.data);
         if(result.data.length > 0){
           const data = result.data;
