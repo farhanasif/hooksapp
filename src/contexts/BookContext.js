@@ -3,10 +3,11 @@ import { bookReducer } from '../reducers/bookReducer';
 
 export const BookContext = createContext();
 
-const geturl = "https://api-experiment-sqlite.glitch.me/books";
+const geturl = "http://localhost:8000/books";
 
 const BookContextProvider = (props) => {
   const [books, dispatch] = useReducer(bookReducer, []);
+  
   useEffect(() => {
     console.log('----------useEffect-------------')
     async function fetchData(){

@@ -25,7 +25,7 @@ const NewBookForm = () => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     
-    await fetch('https://api-experiment-sqlite.glitch.me/book', {
+    await fetch('http://localhost:8000/book', {
         method: 'POST',
         headers: {
           Accept: 'application/json',

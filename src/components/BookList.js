@@ -27,7 +27,7 @@ const BookList = () => {
   console.log(books);
 
   const handleRemove = async(id) => { 
-    const url = "https://api-experiment-sqlite.glitch.me/book/"+id;
+    const url = "http://localhost:8000/book/"+id;
     await fetch(url, {
         method: 'DELETE'
       }).then((response) => response.json())
