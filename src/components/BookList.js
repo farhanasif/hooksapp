@@ -24,7 +24,7 @@ const BookList = () => {
   const theme = isLightTheme ? light : dark;
   const { dispatch } = useContext(BookContext);
 
-  console.log(books);
+  //console.log(books);
 
   const handleRemove = async(id) => { 
     const url = "http://localhost:8000/book/"+id;
@@ -44,14 +44,12 @@ const BookList = () => {
   }
 
   return books ? ( 
-    <div className="book-list" //style={{ color: theme.syntax, background: theme.bg }}
-    >
+    <div className="book-list">
       <ul>
         {books.map(book => {
           return (
             <li 
               key={book.id} 
-              //style={{ background: theme.ui }}
               className="title"
               onClick={() => handleRemove(book.id)}
             >{book.title}</li>

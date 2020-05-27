@@ -9,7 +9,7 @@ const BookContextProvider = (props) => {
   const [books, dispatch] = useReducer(bookReducer, []);
   
   useEffect(() => {
-    console.log('----------useEffect-------------')
+    //console.log('----------useEffect-------------')
     async function fetchData(){
       await fetch(geturl)
       .then(res => res.json())

@@ -10,32 +10,12 @@ export const bookReducer = (state = [], action) => {
     case 'REMOVE_BOOK':
       return state.filter(book => book.id !== action.id);
     case 'INIT':
-      console.log('========INIT CALL:=============')
-      //console.log(action);
       if(action.data){
         return [...state, ...action.data];
       }
       else{
         return [];
       }
-    case 'LOAD':
-      console.log('-------------calling loading function----------');
-
-      const geturl = "https://api-experiment-sqlite.glitch.me/books";
-      fetch(geturl)
-      .then(res => res.json())
-      .then((result) => {
-        console.log('<<<<<<<<<<<<<<<<<calling loading function');
-        //console.log(result.data);
-        if(result.data.length > 0){
-          const data = result.data;
-          return data;
-          //return result.data;
-        }
-        else{
-          return [];
-        }
-      });
     default:
       return state;
   }
