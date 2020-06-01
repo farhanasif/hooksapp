@@ -10,7 +10,7 @@ const Navbar = () => {
     <nav className="navbar" style={{ background: theme.ui, color: theme.syntax }}>
       <h1>My Reading List</h1>
       <div onClick={() => toggleAuth()}>
-        { isAuthenticated ? 'Logged in' : 'Logged out' }
+        { isAuthenticated ? 'Logged in (from AuthContext)' : 'Logged out (from AuthContext)' }
       </div>
     </nav>
   );
