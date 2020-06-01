@@ -5,10 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #553055;
+  background: #6307ad;
 }
 .App{
-  background: #4c2a4c;
+  background: #310457;
   margin: 20px auto;
   width: 90%;
   max-width: 700px;
@@ -31,7 +31,7 @@ body {
   list-style-type: none;
 }
 .book-list li{
-  background: #6d3d6d;
+  background: #4e3d6d;
   border-radius: 4px;
   padding: 10px;
   cursor: pointer;
@@ -63,7 +63,7 @@ input[type='text']{
   padding: 10px;
   box-sizing: border-box;
   margin: 6px 0;
-  background: #3c1f3c;
+  background: #1a022e;
   color: #fff;
   border: 0;
 }
