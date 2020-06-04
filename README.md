@@ -1,6 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React is one of the most declarative, efficient, and flexible JavaScript library for building user interfaces. React 16.8.0 is the first release to support Hooks. Hooks provide a more direct API to the React concepts you already know.With Hooks it is quite easy to use stateful logic between components. Context provides a way to pass data through the component tree without having to pass props down manually at every level. [More Details...](https://reactjs.org/docs/getting-started.html).
 
-## Available Scripts
+## How to install
 
 In the project directory, you can run:
 
