@@ -2,7 +2,6 @@ This project is a simple example of using Hooks, Context in React. I have used A
 
 React is one of the most declarative, efficient, and flexible JavaScript library for building user interfaces. React 16.8.0 is the first release to support Hooks. Hooks provide a more direct API to the React concepts you already know.With Hooks it is quite easy to use stateful logic between components. Context provides a way to pass data through the component tree without having to pass props down manually at every level. [More Details...](https://reactjs.org/docs/getting-started.html).
 
-
 ![Hooks & Context](https://iili.io/Je2ETQ.png)
 
 ## How to install
@@ -32,8 +31,33 @@ I have used three Context Provider to show how multiple Context providers works 
 2. ThemeContextProvider - for managing Theme toggle a bit
 3. BookContextProvider - for managing books CRUD
 
-This application has used Reducers to manage the Books states and operations. 
+This application has used Reducers to manage the Books states and operations.
 Basic **sweetalert2** Toasts used to provide more visibility in the application.
+
+This is a simple way how we access the Context data.
+
+
+    import React, { useContext } from 'react';
+    import { ThemeContext } from '../contexts/ThemeContext';
+    import { AuthContext } from '../contexts/AuthContext';
+    
+    const Navbar = () => {
+      const { isLightTheme, light, dark } = useContext(ThemeContext);
+      const { isAuthenticated, toggleAuth } = useContext(AuthContext);
+      const theme = isLightTheme ? light : dark;
+      return (
+        <nav className="navbar" style={{ background: theme.ui, color: theme.syntax }}>
+          <h1>My Reading List</h1>
+          <div onClick={() => toggleAuth()}>
+            { isAuthenticated ? 'Logged in (from AuthContext)' : 'Logged out (from AuthContext)' }
+          </div>
+        </nav>
+      );
+    }
+     
+    export default Navbar;
+
+We import the Context and can access the state and functions in our React code using `useContext` Hook.
 
 ## Learn More
 
