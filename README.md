@@ -2,11 +2,17 @@ This project is a simple example of using Hooks, Context in React. I have used A
 
 React is one of the most declarative, efficient, and flexible JavaScript library for building user interfaces. React 16.8.0 is the first release to support Hooks. Hooks provide a more direct API to the React concepts you already know.With Hooks it is quite easy to use stateful logic between components. Context provides a way to pass data through the component tree without having to pass props down manually at every level. [More Details...](https://reactjs.org/docs/getting-started.html).
 
+[![Hooks & Context](localhost:3000 "Hooks & Context")](https://iili.io/Je2ETQ.png "Hooks & Context")
+
 ## How to install
 
-In the project directory, you can run:
+In the project directory, you install packages via:
 
-### `npm start`
+ `npm install`
+
+After that you can run the application via:
+
+`npm run`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
