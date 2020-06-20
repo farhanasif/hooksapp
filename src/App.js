@@ -8,8 +8,6 @@ import BookContextProvider from './contexts/BookContext';
 import NewBookForm from './components/NewBookForm';
 
 function App() {
-  const { isLightTheme, light, dark } = useContext(ThemeContext);
-  const theme = isLightTheme ? light : dark;
   return (
     <ThemeContextProvider>
       <div className="App">
